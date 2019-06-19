@@ -16,6 +16,11 @@ public class SampleResource {
 		return "sampleGet: " + id;
 	}
 
+	@GetMapping("/get1/{id}")
+	public String sampleGet1(@PathVariable Long id) {
+		return "sampleGet: " + id;
+	}
+
 	@PostMapping("/post")
 	public SamplePostResponse samplePost(@RequestBody SamplePostRequest request) {
 		return new SamplePostResponse(request.getRequestInt(), request.getRequestString(), request.getRequestFloat());
