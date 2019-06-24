@@ -16,9 +16,10 @@ public class SampleResource {
 		return "sampleGet: " + id;
 	}
 
-	@GetMapping("/get1/{id}")
-	public String sampleGet1(@PathVariable Long id) {
-		return "sampleGet: " + id;
+	@GetMapping("/getList")
+	public void testGetList() {
+		SampleService service = new SampleService();
+		service.testGetList();
 	}
 
 	@PostMapping("/post")
