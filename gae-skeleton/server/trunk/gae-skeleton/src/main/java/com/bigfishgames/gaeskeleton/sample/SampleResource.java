@@ -1,5 +1,6 @@
 package com.bigfishgames.gaeskeleton.sample;
 
+import com.bigfishgames.gaeskeleton.sample.messages.SampleGetResponse;
 import com.bigfishgames.gaeskeleton.sample.messages.SamplePostRequest;
 import com.bigfishgames.gaeskeleton.sample.messages.SamplePostResponse;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +13,10 @@ public class SampleResource {
 	}
 
 	@GetMapping("/get/{id}")
-	public String sampleGet(@PathVariable Long id) {
-		return "sampleGet: " + id;
+	public SampleGetResponse sampleGet(@PathVariable Long id) {
+		SampleGetResponse response = new SampleGetResponse();
+		response.setMessage("sampleGet: " + id);
+		return response;
 	}
 
 	@GetMapping("/getList")
