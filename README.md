@@ -1,4 +1,4 @@
-How to get this project working in IntelliJ:
+## How to get this project working in IntelliJ: ##
 1) Make sure you have IntelliJ Cloud Code plug-in installed and configured.
 2) Clone this code base.
 3) Open it in IntelliJ.
