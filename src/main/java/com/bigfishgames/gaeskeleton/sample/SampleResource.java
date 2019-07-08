@@ -3,13 +3,17 @@ package com.bigfishgames.gaeskeleton.sample;
 import com.bigfishgames.gaeskeleton.sample.messages.SampleGetResponse;
 import com.bigfishgames.gaeskeleton.sample.messages.SamplePostRequest;
 import com.bigfishgames.gaeskeleton.sample.messages.SamplePostResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "/v1/sample")
+@RequestMapping(value = "/v1/sample")
 public class SampleResource {
-	public SampleResource() {
+	private SampleService sampleService;
 
+	@Autowired
+	public SampleResource(SampleService sampleService) {
+		this.sampleService = sampleService;
 	}
 
 	@GetMapping("/get/{id}")
@@ -21,8 +25,7 @@ public class SampleResource {
 
 	@GetMapping("/getList")
 	public void testGetList() {
-		SampleService service = new SampleService();
-		service.testGetList();
+		sampleService.testGetList();
 	}
 
 	@PostMapping("/post")
