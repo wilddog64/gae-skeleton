@@ -1,8 +1,6 @@
 package com.bigfishgames.gaeskeleton.sample;
 
-import com.bigfishgames.gaeskeleton.sample.messages.SampleGetResponse;
-import com.bigfishgames.gaeskeleton.sample.messages.SamplePostRequest;
-import com.bigfishgames.gaeskeleton.sample.messages.SamplePostResponse;
+import com.bigfishgames.gaeskeleton.sample.messages.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,5 +29,18 @@ public class SampleResource {
 	@PostMapping("/post")
 	public SamplePostResponse samplePost(@RequestBody SamplePostRequest request) {
 		return new SamplePostResponse(request.getRequestInt(), request.getRequestString(), request.getRequestFloat());
+	}
+
+	@GetMapping("/getmemcachevalue/{key}")
+	public MemcacheGetResponse getMemcacheValue(@PathVariable String key) {
+		MemcacheGetResponse response = new MemcacheGetResponse();
+		response.key = key;
+		response.value = this.sampleService.getValue(key);
+		return response;
+	}
+
+	@PostMapping("/setmemcachevalue")
+	public void setMemcacheValue(@RequestBody MemcacheSetRequest request) {
+		this.sampleService.setValue(request.key, request.value);
 	}
 }
