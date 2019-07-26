@@ -1,10 +1,17 @@
 package com.bigfishgames.gaeskeleton.di;
 
 import com.bitheads.braincloud.s2s.Brainclouds2s;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.boot.actuate.metrics.MetricsEndpoint;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+import org.springframework.core.annotation.AnnotationAwareOrderComparator;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
+import java.util.Collections;
 
 @Configuration
 public class GaeSkeletonConfig {
@@ -12,6 +19,7 @@ public class GaeSkeletonConfig {
     static protected String m_appId = "12601";
     static protected String m_serverSecret = "e948eb16-8023-437e-be2e-432d2c3b6adb";
     static protected String m_serverName = "GAESkeleton";
+
 
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
