@@ -21,7 +21,7 @@ public class SampleRepository {
 		}
 	}
 
-	public String getAddresses(int limit) throws ApiException {
+	public JSONObject getAddresses(int limit) throws ApiException {
 		JSONObject json = new JSONObject();
 		json.put("service", "globalEntity");
 		json.put("operation", "GET_LIST");
@@ -35,7 +35,7 @@ public class SampleRepository {
 		params.put("maxReturn", limit);
 		json.put("data", params);
 
-		CompletableFuture<String> jsonFuture
+		CompletableFuture<JSONObject> jsonFuture
 				= new CompletableFuture<>();
 
 		brainclouds2s.request(json, (Brainclouds2s context, JSONObject jsonData) -> {
@@ -52,11 +52,11 @@ public class SampleRepository {
 				fail("Missing entityList in return");
 			}
 
-			jsonFuture.complete(jsonData.toString());
+			jsonFuture.complete(jsonData);
 		});
 
 		try {
-			String retJson = jsonFuture.get();
+			JSONObject retJson = jsonFuture.get();
 			return retJson;
 		} catch (InterruptedException iex) {
 			throw new ApiException(iex);

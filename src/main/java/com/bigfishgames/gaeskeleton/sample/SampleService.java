@@ -2,6 +2,7 @@ package com.bigfishgames.gaeskeleton.sample;
 
 import com.bigfishgames.gaeskeleton.exception.ApiException;
 import com.bigfishgames.gaeskeleton.memcache.MemcacheClient;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,8 +21,8 @@ public class SampleService {
 		System.out.println("testGetList");
 
 		try {
-			String retJson = sampleRepository.getAddresses(5);
-			System.out.println(retJson);
+			JSONObject retJson = sampleRepository.getAddresses(5);
+			System.out.println(retJson.toString());
 		} catch (ApiException e) {
 			e.printStackTrace();
 		}
