@@ -6,12 +6,12 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MetricsReporter {
-    private static final Logger log = LoggerFactory.getLogger(MetricsReporter.class);
-    public MetricsReporter() {
+public class ScheduledMetricsReporter {
+    private static final Logger log = LoggerFactory.getLogger(ScheduledMetricsReporter.class);
+    public ScheduledMetricsReporter() {
     }
 
-    @Scheduled(fixedDelayString = "${metricsReporter.fixedDelay}")
+    @Scheduled(fixedDelayString = "${scheduledMetricsReporter.fixedDelay}")
     public void logMetrics() {
         Runtime runtime = Runtime.getRuntime();
         log.info(String.format("{\"jvmMemoryUsed\":%d}", runtime.totalMemory() - runtime.freeMemory()));
