@@ -39,13 +39,13 @@ public class SampleResource {
 	@GetMapping("/getmemcachevalue/{key}")
 	public MemcacheGetResponse getMemcacheValue(@PathVariable String key) {
 		MemcacheGetResponse response = new MemcacheGetResponse();
-		response.key = key;
-		response.value = this.sampleService.getValue(key);
+		response.setKey(key);
+		response.setValue(this.sampleService.getValue(key));
 		return response;
 	}
 
 	@PostMapping("/setmemcachevalue")
 	public void setMemcacheValue(@RequestBody MemcacheSetRequest request) {
-		this.sampleService.setValue(request.key, request.value);
+		this.sampleService.setValue(request.getKey(), request.getValue());
 	}
 }
