@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  <appender name="stackdriver" class="com.google.cloud.logging.logback.LoggingAppender">
+    <log>application.log</log> <!-- Optional : default java.log -->
+    <resourceType>gae_app</resourceType> <!-- Optional : default: auto-detected, fallback: global -->
+  </appender>
+
+  <root level="warn">
+    <appender-ref ref="stdout"/>
+  </root>
+  <logger name="com.bigfishgames" level="info" additivity="false"> <!-- TODO: figure out why additivity=true logs twice, even when severity is below the level set by root -->
+    <appender-ref ref="stdout"/>
+  </logger>
+</configuration>
