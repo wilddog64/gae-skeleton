@@ -26,11 +26,6 @@ public class SampleResource {
 		return response;
 	}
 
-	@GetMapping("/getList")
-	public void testGetList() {
-		sampleService.testGetList();
-	}
-
 	@PostMapping("/post")
 	public SamplePostResponse samplePost(@RequestBody SamplePostRequest request) {
 		return new SamplePostResponse(request.getRequestInt(), request.getRequestString(), request.getRequestFloat());
