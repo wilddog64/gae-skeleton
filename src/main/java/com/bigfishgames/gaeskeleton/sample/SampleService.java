@@ -1,31 +1,16 @@
 package com.bigfishgames.gaeskeleton.sample;
 
-import com.bigfishgames.gaeskeleton.exception.ApiException;
 import com.bigfishgames.gaeskeleton.memcache.MemcacheClient;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SampleService {
-	private SampleRepository sampleRepository;
 	private MemcacheClient memcacheClient;
 
 	@Autowired
-	public SampleService(SampleRepository sampleRepository, MemcacheClient memcacheClient) {
-		this.sampleRepository = sampleRepository;
+	public SampleService(MemcacheClient memcacheClient) {
 		this.memcacheClient = memcacheClient;
-	}
-
-	public void testGetList() {
-		System.out.println("testGetList");
-
-		try {
-			JSONObject retJson = sampleRepository.getAddresses(5);
-			System.out.println(retJson.toString());
-		} catch (ApiException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void setValue(String key, String value) {
