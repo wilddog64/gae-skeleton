@@ -19,8 +19,6 @@ public class SampleServiceTest {
     private SampleService sampleService;
 
     @MockBean
-    private SampleRepository mockSampleRepository;
-    @MockBean
     private MemcacheClient mockMemcacheClient;
 
     @Test
