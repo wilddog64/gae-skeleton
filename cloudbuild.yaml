@@ -3,3 +3,10 @@ steps:
     args:
       - install
       - appengine:stage
+  - name: gcr.io/cloud-builders/gsutil
+    args:
+      - '-m'
+      - cp
+      - '-r'
+      - gae-skeleton/target/appengine-staging
+      - gs://genesis-buckets-build/int/gae-skeleton/${execution.startTime}
