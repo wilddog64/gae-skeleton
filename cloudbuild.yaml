@@ -9,5 +9,5 @@ steps:
       - '-m'
       - cp
       - '-r'
-      - gae-skeleton/target/appengine-staging
+      - target/appengine-staging
       - gs://genesis-buckets-build/int/gae-skeleton/${execution.startTime}
