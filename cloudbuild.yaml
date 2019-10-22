@@ -1,6 +1,7 @@
 steps:
   - name: gcr.io/cloud-builders/mvn
     args:
+      - '-B'
       - install
       - appengine:stage
   - name: gcr.io/cloud-builders/gsutil
